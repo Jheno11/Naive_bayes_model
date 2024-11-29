@@ -79,7 +79,6 @@ if uploaded_file:
     param_grid = {
         'var_smoothing': np.logspace(0, -9, num=100),
         'priors': [None, [0.5, 0.5], [0.25, 0.75]],
-        'fit_prior': [True]
     }
 
     results_df = pd.DataFrame(columns=[
