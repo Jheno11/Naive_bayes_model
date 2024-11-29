@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split, GridSearchCV
 from imblearn.over_sampling import RandomOverSampler, BorderlineSMOTE, ADASYN, SMOTEN, KMeansSMOTE
 from imblearn.combine import SMOTEENN, SMOTETomek
@@ -118,9 +118,6 @@ if uploaded_file:
         y_test_encoded = label_encoder.transform(y_test)
 
         # Train model
-        from sklearn.naive_bayes import GaussianNB
-
-        # Replace SVM model training code with Gaussian Naive Bayes
         if use_hyperparameter_tuning == "Yes":
             st.write("Performing Hyperparameter Tuning...")
             grid_search = GridSearchCV(GaussianNB(), param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=0, return_train_score=True)
@@ -130,7 +127,6 @@ if uploaded_file:
         else:
             model = GaussianNB()
             model.fit(X_train_resampled, y_train_encoded)
-
 
         # Evaluate model
         y_pred_train = model.predict(X_train_resampled)
