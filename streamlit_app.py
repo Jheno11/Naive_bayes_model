@@ -77,7 +77,9 @@ if uploaded_file:
     # Hyperparameter tuning
     use_hyperparameter_tuning = st.radio("Use Hyperparameter Tuning?", options=['Yes', 'No'], index=1)
     param_grid = {
-        'var_smoothing': np.logspace(0, -9, num=100)
+        'var_smoothing': np.logspace(0, -9, num=100),
+        'priors': [None, [0.5, 0.5], [0.25, 0.75]],
+        'fit_prior': [True, False]
     }
 
     results_df = pd.DataFrame(columns=[
